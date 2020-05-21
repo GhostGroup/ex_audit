@@ -24,6 +24,9 @@ defmodule ExAudit.Queryable do
         order_by: [desc: :recorded_at]
       )
 
+    limit = Keyword.get(opts, :limit)
+    query = if limit, do: query |> limit(^limit), else: query
+
     # TODO what do when we get a query
 
     query =

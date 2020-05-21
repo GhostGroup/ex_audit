@@ -68,6 +68,9 @@ defmodule ExAuditTest do
     versions = Repo.history(user)
 
     assert length(versions) == 3
+
+    latest = Repo.history(user, limit: 1)
+    assert length(latest) == 1
   end
 
   test "should track custom data" do
